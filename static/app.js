@@ -91,6 +91,13 @@ function participantConnected(participant) {
     let labelDiv = document.createElement('div');
     labelDiv.setAttribute('class', 'label');
     labelDiv.innerHTML = participant.identity;
+
+    let draggableDiv = document.createElement("div");
+    draggableDiv.setAttribute('draggable', 'true');
+
+    let ondragstartDiv = document.createElement("div");
+    ondragstartDiv.setAttribute('ondragstart', 'drag(event)');
+
     participantDiv.appendChild(labelDiv);
 
     container.appendChild(participantDiv);
@@ -215,9 +222,7 @@ participant.onmousedown = function(event) {
       participant.hidden = true; 
       let dropOntoObject = document.elementFromPoint(event.clientX, event.clientY);
       participant.hidden = false;
-
       if (!dropOntoObject) return;
-
       let dropParticipant = dropOntoObject.closest('.droppable'); 
     }
   
@@ -234,51 +239,48 @@ participant.onmousedown = function(event) {
 participant.ondragstart = function() {
     return false;
 };
-
 function drop(ev) {
     document.removeEventListener('mousemove', onMouseMove);
     participant.onmouseup = null;
     participant.removeAttribute("title");
-    ev.target.appendChild(participant);
+    ev.target.appendChild(participant);
     participant.setAttribute("title", ev.target.className);
     console.log(participant.title);
     socket.emit("atNewChair", {particip: participant, event: ev});
 }
-
 socket.on("movingToChair", function(data) {
     data.participant.style.left = data.left;
     data.participant.style.top = data.top;
 });
-
 socket.on("atNewChair", function(data) {
     data.particip.setAttribute("title", data.event.target.className);
 });
 */
 function allowDrop(ev) {
-    ev.preventDefault();
+    ev.preventDefault();
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
-    ev.preventDefault();
+    ev.preventDefault();
     let data = ev.dataTransfer.getData("text");
     let participant = document.getElementById(data);
 
     let ogTable = participant.getAttribute("title");
     participant.removeAttribute("title");
-    participant.setAttribute("title", ev.target.className);
-    ev.target.appendChild(participant);
+    participant.setAttribute("title", ev.target.id);
+    ev.target.appendChild(participant);
     let nextTable = participant.getAttribute("title");
 
-    let rect = document.getElementById(data).getBoundingClientRect();
+    //let rect = document.getElementById(data).getBoundingClientRect();
     // it allows for a lot more connection and human-to-human
 
     //socket.emit("movedToChair", {participan: participant, event: ev, rectangle: rect});
     
-    room.participants.forEach(addLocalToRemoteScreens);
+    //room.participants.forEach(addLocalToRemoteScreens);
 }
 
 socket.on("movedToChair", function(data) {
@@ -302,22 +304,17 @@ function addLocalToRemoteScreens(participant) {
     //participantDiv.setAttribute('id', participant.sid);
     //participantDiv.setAttribute('class', 'participant');
     participantDiv.removeAttribute("title");
-
-
     let tableDiv = document.createElement('div');
     tableDiv.setAttribute('class', 'label');
     tableDiv.innerHTML = participant.identity;
     participantDiv.appendChild(tableDiv);
-
     container.appendChild(participantDiv);
-
     participant.tracks.forEach(publication => {
         if (publication.isSubscribed)
             trackSubscribed(tracksDiv, publication.track);
     });
     participant.on('trackSubscribed', track => trackSubscribed(tracksDiv, track));
     participant.on('trackUnsubscribed', trackUnsubscribed);
-
     updateParticipantCount();
 }; */
 

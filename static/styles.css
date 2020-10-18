@@ -1,8 +1,456 @@
-.container {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+h1, h2 {
+  text-align: center;
+  text-decoration: none;
+  font-size: 80px;
+  font-family: "Dancing Script", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #f3e8e1;
+  font-weight: bold;
+  background-color: #5f50b4;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  width: 30%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#title {
+  margin-top: 210px;
+}
+
+#sign-in-form {
+  text-align: center;
+}
+
+#join-button {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 15px;
+  padding-top: 8px;
+  width: 20%;
+  height: 10%;
+  border-radius: 15px;
+}
+
+#bottom-bar {
+  opacity: 0.8;
+  background-color: #3a4048;
+}
+
+#disconnect-button {
+  border-color: #e00c0c;
+  background-color: #e00c0c;
+  border-radius: 15px;
+  color: white;
+}
+
+#disconnect-button:hover {
+  background-color: #bb1111;
+  border-radius: 15px;
+  color: white;
+}
+
+#reconnect-button {
+  border-color: #2c52dc;
+  background-color: #2c52dc;
+  border-radius: 15px;
+  color: white;
+}
+
+#reconnect-button:hover {
+  background-color: #0d6bf0;
+  border-radius: 15px;
+  color: white;
+}
+
+#disconnected {
+  text-align: center;
+}
+
+.sign-in-labels {
+  position: absolute;
+  background-color: azure;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
+
+.grid-item {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  height: 100px;
+}
+
+.classroom-unseated-student {
+  background-color: hotpink;
+  padding: 10px;
+  margin: 4px;
+  height: 60px;
+}
+
+.classroom-seated-student {
+  background-color: green;
+}
+
+.classroom-table {
+  background-color: #753e04;
+}
+
+.classroom-teacher-screen {
+  background-color: #310475;
+}
+
+.classroom-teacher-video {
+  background-color: #75040a;
+}
+
+#top-bar {
+  padding-top: 0px;
+}
+
+.title-bar {
+  height: 50px;
+  color: #050505;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 10px;
+  background: #67ce22;
+  border-color: black;
+  border-width: 3px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-style: solid;
+}
+
+.title-bar:hover {
+  color: #050505;
+  background-color: #7afb24;
+  text-decoration: none;
+}
+
+.dropdown-element {
+  display: block;
+  position: relative;
+  height: 50px;
+  color: #050505;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 10px;
+  background: #67ce22;
+  border-color: black;
+  border-width: 3px;
+  border-top-width: 0px;
+  border-style: solid;
+}
+
+.dropdown-menu {
+  display: hidden;
+  background-color: white;
+  padding: 0px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+#dropdown-header:hover .dropdown-menu {
+  display: block;
+}
+
+#dropdown-header:hover {
+  background-color: #00ff62;
+  cursor: pointer;
+}
+
+.dropdown-element:hover {
+  color: #050505;
+  background-color: #7afb24;
+  text-decoration: none;
+}
+
+.current {
+  background-color: #e3ece9;
+}
+
+.current::before {
+  content: "»";
+}
+
+.current::after {
+  content: "«";
+}
+
+.current:hover {
+  background-color: #e3ece9;
+  cursor: default;
+}
+
+#search-element {
+  padding-top: 0px;
+}
+
+#search-bar {
+  position: relative;
+  height: 49px;
+  right: 15px;
+  bottom: 0px;
+}
+
+button {
+  right: 0px;
+  height: 49px;
+  border-radius: 4px;
+  background-color: #5f50b4;
+  border-color: #5f50b4;
+  color: white;
+}
+
+button:hover {
+  background-color: #c625d1;
+}
+
+input {
+  position: relative;
+  width: 350px;
+  height: 50px;
+}
+
+input::placeholder {
+  color: purple;
+}
+
+.flexbox {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  border-spacing: 40px;
+}
+
+.grid-box {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 3px;
+  border-color: black;
+  border-width: 0px;
+  border-style: solid;
+  width: 30%;
+  height: 400px;
+  margin: 15px;
+  background-color: white;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  flex-grow: 4;
+}
+
+.grid-box .grid-img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-box .grid-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.grid-box:hover .grid-img img {
+  opacity: 0;
+}
+
+.grid-box .grid-text {
+  position: absolute;
+  bottom: 20px;
+  left: 10%;
+  width: 80%;
+  height: 60px;
+  background-color: white;
+  transition: 0.5s;
+  overflow: hidden;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.grid-box:hover .grid-text {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.grid-box .grid-text h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.grid-box .grid-text p {
+  margin: 10px 0 0;
+  padding: 0;
+  opacity: 0;
+  line-height: 1.2em;
+  transition: 0.5s;
+  text-align: justify;
+}
+
+.grid-box:hover .grid-text p {
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+.grid-text button {
+  transition-delay: 0s;
+  animation-delay: 0s;
+  position: absolute;
+  bottom: 75px;
+  right: 33%;
+  opacity: 0;
+  background-color: #4CAF50;
+  color: white;
+  padding-top: 12px;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.grid-box:hover .grid-text button {
+  opacity: 1;
+  transition-delay: 0.65s;
+}
+
+.sponsor-img {
+  padding: 40px;
+  width: auto;
+  height: 300px;
+}
+
+.sponsor-msg {
+  width: 40%;
+  margin: auto;
+}
+
+#h1-support {
+  width: 30%;
+}
+
+#donate-div {
+  position: absolute;
+  left: 57%;
+}
+
+#donate-button {
+  background-color: #0066ff;
+  color: white;
+  width: 200px;
+  height: 60px;
+  border-radius: 12px;
+}
+
+#donate-button:hover {
+  background-color: #3298ff;
+  color: white;
+  width: 200px;
+  height: 60px;
+}
+
+.about-us-info div span {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.about-button {
+  left: 25%;
+  width: 50%;
+}
+
+.base-page {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+  background-image: url("images/backgrounds/home-3.jpg");
+}
+
+.bird-text {
+  color: #030303;
+  text-align: center;
+  margin: auto;
+  width: 75%;
+  border-radius: 16px;
+  padding: 15px;
+  background-color: white;
+  opacity: 0.85;
+}
+
+#login-screen {
+  background-image: url("images/whiteboard.jpg");
+}
+
+#classroom {
+  background-image: url("images/classroom.jpg");
+  background-size: contain;
+}
+
+#disconnected {
+  background-image: url("images/exit.jpg");
+}
+
+#about-us {
+  background-image: url("images/backgrounds/home-5.jpg");
+}
+
+#caracara-page {
+  background-image: url("images/backgrounds/caracara.jpg");
+}
+
+#eagle-page {
+  background-image: url("images/backgrounds/eagle.jpg");
+}
+
+#falcon-page {
+  background-image: url("images/backgrounds/falcon.jpg");
+}
+
+#harrier-page {
+  background-image: url("images/backgrounds/harrier.jpg");
+}
+
+#hawk-page {
+  background-image: url("images/backgrounds/hawk.jpg");
+}
+
+#kite-page {
+  background-image: url("images/backgrounds/kite.jpg");
+}
+
+#osprey-page {
+  background-image: url("images/backgrounds/osprey.jpg");
+}
+
+#owl-page {
+  background-image: url("images/backgrounds/owl.jpg");
+}
+
+#vulture-page {
+  background-image: url("images/backgrounds/vulture.jpg");
 }
 .participant {
     margin-bottom: 5px;
