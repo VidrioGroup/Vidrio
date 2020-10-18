@@ -22,11 +22,14 @@ $donate-button-hover-text-color: rgb(255, 255, 255);
 
 
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 
 h1, h2{
   text-align: center;
   text-decoration: none;
+  font-size: 80px;
+  font-family: 'Dancing Script', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: $header-color;
   font-weight: bold;
   background-color: $header-background-color;
@@ -39,27 +42,65 @@ h1, h2{
   margin-bottom: 20px;
 }
 
+#title{
+  margin-top: 210px;
+}
+
 #sign-in-form{
 text-align: center;
 }
-#button-holder{
-  text-align: right;
-  color: #4CAF50;
-}
+
 #join-button{
   text-align: center;
   font-size: 40px;
   margin-top: 15px;
-  padding-top: 3px;
-  width: 25%;
+  padding-top: 8px;
+  width: 20%;
   height: 10%;
+  border-radius: 15px;
+}
+
+#bottom-bar{
+  opacity: .8;
+  background-color: rgb(58, 64, 72);
+}
+
+#disconnect-button{
+  border-color: rgb(224, 12, 12);
+  background-color: rgb(224, 12, 12);
+  border-radius: 15px;
+  color: white;
+}
+
+#disconnect-button:hover{
+  background-color: rgb(187, 17, 17);
+  border-radius: 15px;
+  color: white;
+}
+
+#reconnect-button{
+  border-color: rgb(44, 82, 220);
+  background-color: rgb(44, 82, 220);
+  border-radius: 15px;
+  color: white;
+}
+
+#reconnect-button:hover{
+  background-color: rgb(13, 107, 240);
+  border-radius: 15px;
+  color: white;
+}
+
+#disconnected{
+  text-align: center;
 }
 
 .sign-in-labels{
+  position: absolute;
   background-color: azure;
   height: 50px;
   text-align: center;
-  padding-top: 10px;
+  padding: 10px;
 }
 
 .grid{
@@ -94,6 +135,10 @@ text-align: center;
 
 .classroom-teacher-screen{
   background-color: rgb(49, 4, 117);
+}
+
+.classroom-teacher-video{
+  background-color: rgb(117, 4, 10);
 }
 
 #top-bar{
@@ -188,20 +233,26 @@ text-align: center;
 }
 
 button{
-  position: absolute;
   right: 0px;
   height: 49px;
   border-radius: 4px;
+  background-color: $header-background-color;
+  border-color: $header-background-color;
+  color: white;
 }
 
 button:hover{
-  background-color:rgb(187, 179, 179);
+  background-color:rgb(198, 37, 209);
 }
 
 input{
+  position: relative;
   width: 350px;
   height: 50px;
-  padding: 15px 22px;
+}
+
+input::placeholder{
+  color:purple;
 }
 
 .flexbox{
@@ -377,15 +428,16 @@ input{
 }
 
 #login-screen{
-  background-image: url("images/chalkboard.jpg");
+  background-image: url("images/whiteboard.jpg");
 }
 
 #classroom{
   background-image: url("images/classroom.jpg");
+  background-size: contain;
 }
 
-#sponsors{
-  background-image: url("images/backgrounds/home-2.jpg");
+#disconnected{
+  background-image: url("images/exit.jpg");
 }
 
 #about-us{

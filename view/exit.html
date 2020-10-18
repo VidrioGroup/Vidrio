@@ -8,18 +8,15 @@
       <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
       <link rel="manifest" href="favicon_io/site.webmanifest">
-      <title>Vidrio - Login</title>
+      <title>Vidrio - Disconnected</title>
     </head>
-    <body class="base-page" id="login-screen">
-        <h1 id ="title">Vidrio</h1>
-        <form id="sign-in-form">
-            <input type="text" name=”username” id="username" placeholder="   Username:">
-            <input type="text" name=password” id="password" placeholder="   Password:">
-            <div id="button-holder">
-                <a href="classroom.html"><button id="join-button">Join call</button></a>
-            </div>
-        </form>
-
+    <body id="disconnected">
+       <h2>
+           You have disconnected from the classroom.
+       </h2>
+       <div>
+           <a href="classroom.html"><button id=reconnect-button>Reconnect</button></a>
+       </div>
         <script src="//media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
         <script src="{{ url_for('static', filename='app.js') }}"></script>
     </body>

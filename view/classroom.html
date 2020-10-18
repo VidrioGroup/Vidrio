@@ -4,13 +4,14 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="custom_styles.css">
         <meta name = "viewport" content = "width = device-width", initial-scale = 1.0>
-        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/vidrio-logo.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/vidrio-logo-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/vidrio-logo-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/favicon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
       <link rel="manifest" href="favicon_io/site.webmanifest">
       <title>Vidrio - Classroom</title>
     </head>
     <body id="classroom">
+
 
         <div class="container flexbox col-9">
             <div class="grid-item classroom-unseated-student">Waiting_Student_1</div>
@@ -63,8 +64,8 @@
             <div class="grid-item classroom-teacher-screen"></div>
             <div class="grid-item classroom-teacher-screen"></div>
             <div class="grid-item classroom-teacher-screen"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
+            <div class="grid-item classroom-seated-student"></div>
+            <div class="grid-item classroom-teacher-video"></div>
 
              <!--row 6 -->
              <div class="grid-item classroom-empty-space"></div>
@@ -104,7 +105,9 @@
 
 
         </div>
-
+        <div id="bottom-bar">
+            <a href="exit.html"><button id="disconnect-button">Disconnect</button></a>
+        </div>
         <script src="//media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
         <script src="{{ url_for('static', filename='app.js') }}"></script>
     </body>
