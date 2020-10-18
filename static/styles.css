@@ -83,11 +83,14 @@ h1, h2 {
 .grid {
   display: grid;
   padding: 10px;
-  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10%;
+}
+
+#classroom-grid-wrapper{
+  text-align: center;
 }
 
 .grid-item {
-  padding: 20px;
   font-size: 30px;
   text-align: center;
   height: 100px;
@@ -401,7 +404,8 @@ input::placeholder {
 }
 
 #login-screen {
-  background-image: url("images/whiteboard.jpg");
+  background-image: url("whiteboard.jpg");
+  background-size: contain;
 }
 
 #classroom {
@@ -453,9 +457,8 @@ input::placeholder {
   background-image: url("images/backgrounds/vulture.jpg");
 }
 .participant {
-    margin-bottom: 5px;
-    margin-right: 5px;
 }
+
 .participant div {
     text-align: center;
 }
@@ -464,8 +467,8 @@ input::placeholder {
     border: 1px solid black;
 }
 .participant div video:not(.participantZoomed) {
-    width: 240px;
-    height: 180px;
+    width: 50px;
+    height: 50px;
 }
 .participant .label {
     background-color: #ddd;

@@ -5,8 +5,8 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
     </head>
-    <body>
-        <h1>Flask & Twilio Video Conference</h1>
+    <body class="base-page" id="login-screen">
+        <h1> Vidrio </h1>
         <form>
             <label for="username">Name: </label>
             <input type="text" name=”username” id="username">
@@ -19,90 +19,92 @@
             <!-- <div id="local" class="participant" title="waitingRoom" draggable="true" ondragstart="drag(event)"><div></div><div class="label">Me</div></div> -->
             <!-- more participants will be added dynamically here -->
         </div>
-        <div class="container grid">
-            <!--row 1 -->
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_1a" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_2a" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-
-             <!--row 2 -->
-             <div id="seat_1b" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-             <div class="grid-item classroom-table table_1"></div>
-             <div id="seat_1c" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-             <div class="grid-item classroom-empty-space"></div>
-             <div id="seat_2b" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-             <div class="grid-item classroom-table table_2"></div>
-             <div id="seat_2c" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-
-              <!--row 3 -->
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_1d" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_2d" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-
-             <!--row 4 -->
-             <div class="grid-item classroom-empty-space"></div>
-             <div class="grid-item classroom-empty-space"></div>
-             <div class="grid-item classroom-teacher-screen"></div>
-             <div class="grid-item classroom-teacher-screen"></div>
-             <div class="grid-item classroom-teacher-screen"></div>
-             <div class="grid-item classroom-empty-space"></div>
-             <div class="grid-item classroom-empty-space"></div>
-
-              <!--row 5 -->
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-teacher-screen"></div>
-            <div class="grid-item classroom-teacher-screen"></div>
-            <div class="grid-item classroom-teacher-screen"></div>
-            <div id="seat_teacherDesk" class="grid-item classroom-seated-student" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-teacher-video"></div>
-
-             <!--row 6 -->
-             <div class="grid-item classroom-empty-space"></div>
-             <div class="grid-item classroom-empty-space"></div>
-             <div class="grid-item classroom-teacher-screen"></div>
-             <div class="grid-item classroom-teacher-screen"></div>
-             <div class="grid-item classroom-teacher-screen"></div>
-             <div class="grid-item classroom-empty-space"></div>
-             <div class="grid-item classroom-empty-space"></div>
-
-              <!--row 7 -->
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_3a" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_4a" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-
-             <!--row 8 -->
-             <div id="seat_3b" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-             <div class="grid-item classroom-table table_3"></div>
-             <div id="seat_3c" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-             <div class="grid-item classroom-empty-space"></div>
-             <div id="seat_4b" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-             <div class="grid-item classroom-table table_4"></div>
-             <div id="seat_4c" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-
-              <!--row 9 -->
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_3d" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div class="grid-item classroom-empty-space"></div>
-            <div id="seat_4d" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-            <div class="grid-item classroom-empty-space"></div>
-
+        <div id="classroom-grid-wrapper"> 
+            <div class="container grid">
+                <!--row 1 -->
+                    <div class="grid-item classroom-empty-space"></div>
+                    <div id="seat_1a" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="grid-item classroom-empty-space"></div>
+                    <div class="grid-item classroom-empty-space"></div>
+                    <div class="grid-item classroom-empty-space"></div>
+                    <div id="seat_2a" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                    <div class="grid-item classroom-empty-space"></div>      
+    
+                 <!--row 2 -->
+                 <div id="seat_1b" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                 <div class="grid-item classroom-table table_1"></div>
+                 <div id="seat_1c" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div id="seat_2b" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                 <div class="grid-item classroom-table table_2"></div>
+                 <div id="seat_2c" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    
+                  <!--row 3 -->
+                <div class="grid-item classroom-empty-space"></div>
+                <div id="seat_1d" class="grid-item classroom-seated-student table_1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div id="seat_2d" class="grid-item classroom-seated-student table_2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="grid-item classroom-empty-space"></div>
+    
+                 <!--row 4 -->
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div class="grid-item classroom-teacher-screen"></div>
+                 <div class="grid-item classroom-teacher-screen"></div>
+                 <div class="grid-item classroom-teacher-screen"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+    
+                  <!--row 5 -->
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-teacher-screen"></div>
+                <div class="grid-item classroom-teacher-screen"></div>
+                <div class="grid-item classroom-teacher-screen"></div>
+                <div id="seat_teacherDesk" class="grid-item classroom-seated-student" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="grid-item classroom-teacher-video"></div>
+    
+                 <!--row 6 -->
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div class="grid-item classroom-teacher-screen"></div>
+                 <div class="grid-item classroom-teacher-screen"></div>
+                 <div class="grid-item classroom-teacher-screen"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+    
+                  <!--row 7 -->
+                <div class="grid-item classroom-empty-space"></div>
+                <div id="seat_3a" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div id="seat_4a" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="grid-item classroom-empty-space"></div>
+    
+                 <!--row 8 -->
+                 <div id="seat_3b" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                 <div class="grid-item classroom-table table_3"></div>
+                 <div id="seat_3c" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                 <div class="grid-item classroom-empty-space"></div>
+                 <div id="seat_4b" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                 <div class="grid-item classroom-table table_4"></div>
+                 <div id="seat_4c" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    
+                  <!--row 9 -->
+                <div class="grid-item classroom-empty-space"></div>
+                <div id="seat_3d" class="grid-item classroom-seated-student table_3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div class="grid-item classroom-empty-space"></div>
+                <div id="seat_4d" class="grid-item classroom-seated-student table_4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div class="grid-item classroom-empty-space"></div>  
+            </div>
 
         </div>
+       
         <div id="bottom-bar">
             <a href="exit.html"><button id="disconnect-button">Disconnect</button></a>
         </div>
