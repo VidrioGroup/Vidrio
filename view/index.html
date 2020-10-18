@@ -1,17 +1,26 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="custom_styles.css">
+        <meta name = "viewport" content = "width = device-width", initial-scale = 1.0>
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/vidrio-logo.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/vidrio-logo-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/vidrio-logo-16x16.png">
+      <link rel="manifest" href="favicon_io/site.webmanifest">
+      <title>Vidrio - Login</title>
     </head>
-    <body>
-        <h1>Vidrio</h1>
-        <form>
-            <label for="username">Name: </label>
+    <body class="base-page" id="login-screen">
+        <h1 id ="title">Vidrio</h1>
+        <form id="sign-in-form">
+            <label class="sign-in-labels" for="username">Name: </label>
             <input type="text" name=”username” id="username">
-            <button id="join_leave">Join call</button>
-            <button id="share_screen" disabled>Share screen</button>
+            <label class="sign-in-labels" for="password">Password: </label>
+            <input type="text" name=password” id="password">
+            <div id="button-holder">
+                <a href="classroom.html"> <button id="join-button">Join call</button></a>
+            </div>
         </form>
-        <p id="count">Disconnected.</p>
         <div id="container" class="container">
             <div id="local" class="participant">
                 <div></div>
