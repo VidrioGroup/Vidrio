@@ -108,7 +108,9 @@ h1, h2 {
 }
 
 .classroom-table {
-  background-color: #753e04;
+  background-image: url("table.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .classroom-teacher-screen {
