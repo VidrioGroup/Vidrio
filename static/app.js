@@ -1,5 +1,5 @@
 const usernameInput = document.getElementById('username');
-const button = document.getElementById('join_leave');
+const button = document.getElementById('join-button');
 const shareScreen = document.getElementById('share_screen');
 const container = document.getElementById('container');
 const count = document.getElementById('count');
@@ -91,6 +91,13 @@ function participantConnected(participant) {
     let labelDiv = document.createElement('div');
     labelDiv.setAttribute('class', 'label');
     labelDiv.innerHTML = participant.identity;
+
+    let draggableDiv = document.createElement("div");
+    draggableDiv.setAttribute('draggable', 'true');
+
+    let ondragstartDiv = document.createElement("div");
+    ondragstartDiv.setAttribute('ondragstart', 'drag(event)');
+
     participantDiv.appendChild(labelDiv);
 
     container.appendChild(participantDiv);
@@ -269,16 +276,16 @@ function drop(ev) {
 
     let ogTable = participant.getAttribute("title");
     participant.removeAttribute("title");
-    participant.setAttribute("title", ev.target.className);
+    participant.setAttribute("title", ev.target.id);
     ev.target.appendChild(participant);
     let nextTable = participant.getAttribute("title");
 
-    let rect = document.getElementById(data).getBoundingClientRect();
+    //let rect = document.getElementById(data).getBoundingClientRect();
     // it allows for a lot more connection and human-to-human
 
     //socket.emit("movedToChair", {participan: participant, event: ev, rectangle: rect});
     
-    room.participants.forEach(addLocalToRemoteScreens);
+    //room.participants.forEach(addLocalToRemoteScreens);
 }
 
 socket.on("movedToChair", function(data) {

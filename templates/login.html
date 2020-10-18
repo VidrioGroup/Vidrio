@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="custom_styles.css">
+        <meta name="viewport" content="width = device-width", initial-scale = 1.0>
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/favicon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="favicon_io/site.webmanifest">
+        <title>Vidrio - Login</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    </head>
+    <body class="base-page" id="login-screen">
+        <h1 id ="title">Vidrio</h1>
+        <form id="sign-in-form">
+            <input type="text" name=”username” id="username" placeholder="   Username:">
+            <input type="text" name=password” id="password" placeholder="   Password:">
+            <div id="button-holder">
+                <a href="classroom.html"><button id="join-button">Join call</button></a>
+            </div>
+        </form>
+        <script src="//media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
+        <script src="{{ url_for('static', filename='app.js') }}"></script>
+    </body>
+</html>
