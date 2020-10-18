@@ -6,9 +6,9 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/classroom.courses.readonly']
+SCOPES = ['https://www.googleapis.com/auth/classroom.courses']
 
-def main():
+def start():
     """Shows basic usage of the Classroom API.
     Prints the names of the first 10 courses the user has access to.
     """
@@ -16,9 +16,11 @@ def main():
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
+
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
+
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -43,6 +45,7 @@ def main():
         print('Courses:')
         for course in courses:
             print(course['name'])
+    return service
 
 if __name__ == '__main__':
-    main()
+    start()

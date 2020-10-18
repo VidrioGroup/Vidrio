@@ -20,7 +20,7 @@ def createCourse(courseName, courseSection, courseHeading, courseDescription, ro
         'courseState': courseState
     }
     course = service.courses().create(body=course).execute()
-    #print('Course created: %s %s' % (course.get('name'), course.get('id')))
+    print('Course created: %s %s' % (course.get('name'), course.get('id')))
     courseRosters[courseName] = students
     return course
 
@@ -32,7 +32,7 @@ def updateStudents(course, newStudents):
     return
 
 def getCourseDetails(course_id, service):
-    course = service.courses().get(id=course_id).execute()
+    course = service.courses().get(course_id).execute()
     return ('Course "{%s}" found.' % course.get('name'))
 
 def getCoursesDetails(service):
@@ -40,7 +40,7 @@ def getCoursesDetails(service):
     page_token = None
 
     while True:
-        response = service.courses().list(pageToken=page_token, pageSize=100).execute()
+        response = service.courses().list(page_token, 100).execute()
         courses.extend(response.get('courses', []))
         page_token = response.get('nextPageToken', None)
         if not page_token: break
@@ -51,15 +51,15 @@ def getCoursesDetails(service):
         return None
     else:
         ret += 'Courses:'
-            for course in courses:
-                ret += "\n" + course.get('name') + " " + course.get('id')
-         return ret
+        for course in courses:
+            ret += "\n" + course.get('name') + " " + course.get('id')
+        return ret
 
 def updateCourse(course_id, service, changes):
     course = dict()
     for val in changes:
         course[val[0]] = val[1]
-    course = service.courses().patch(id=course_id, updateMask='section,room', body=course).execute()
+    course = service.courses().patch(course_id, 'section,room', course).execute()
     #print('Course "%s" updated.' % course.get('name'))
     return
 
@@ -85,7 +85,7 @@ def deleteTeacher(teacher):
     return
 
 def addTeacher(firstName, lastName):
-    self.addTeacher(firstName, lastName, None)
+    addTeacher(firstName, lastName, None)
     return
 
 def addTeacher(lastName, firstName, courses):
