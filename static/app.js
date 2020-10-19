@@ -92,11 +92,9 @@ function participantConnected(participant) {
     labelDiv.setAttribute('class', 'label');
     labelDiv.innerHTML = participant.identity;
 
-    let draggableDiv = document.createElement("div");
-    draggableDiv.setAttribute('draggable', 'true');
-
-    let ondragstartDiv = document.createElement("div");
-    ondragstartDiv.setAttribute('ondragstart', 'drag(event)');
+    // set it up so you can drag users around
+    participantDiv.setAttribute('draggable', 'true');
+    participantDiv.setAttribute('ondragstart', 'drag(event)');
 
     participantDiv.appendChild(labelDiv);
 
